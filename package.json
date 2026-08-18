@@ -8,8 +8,10 @@
   "scripts": {
     "start": "bare app.js",
     "package:mac": "./scripts/package-macos.sh",
+    "package:dmg": "./scripts/package-dmg.sh",
     "start:mac": "./scripts/start-macos.sh",
     "verify:mac": "plutil -lint \"./dist/Pocket Relay.app/Contents/Info.plist\" && lipo \"./dist/Pocket Relay.app/Contents/MacOS/Pocket Relay\" -verify_arch arm64 x86_64 && codesign --verify --deep --strict --verbose=2 \"./dist/Pocket Relay.app\"",
+    "verify:dmg": "hdiutil verify \"./dist/Pocket Relay.dmg\"",
     "test": "bare test/all.js",
     "smoke:hyperswarm": "bare test/hyperswarm-smoke.js"
   },

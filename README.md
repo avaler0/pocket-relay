@@ -61,6 +61,19 @@ npm run start:mac -- --name Alice --room <topic>
 
 On first BLE use, macOS should ask for Bluetooth permission. Approve it under **System Settings → Privacy & Security → Bluetooth** if necessary. Do not launch the `.app` by double-clicking it in Finder; the current interface requires terminal input and output.
 
+### Create a macOS disk image
+
+Build and verify a distributable disk image:
+
+```bash
+npm run package:dmg
+npm run verify:dmg
+```
+
+This creates `dist/Pocket Relay.dmg` containing the universal app, an Applications shortcut, `Start Pocket Relay.command`, and installation instructions. A recipient can drag both the app and command launcher into Applications, then double-click the launcher. It opens Terminal, asks for a display name and optional room topic, and starts the app through LaunchServices so macOS recognizes its Bluetooth privacy metadata.
+
+The current app and DMG use an ad-hoc development signature. A downloaded copy may require **Control-click → Open** on first launch. Warning-free public distribution requires signing the app with an Apple Developer ID Application certificate and notarizing the DMG.
+
 ## Commands
 
 | Command | Effect |
