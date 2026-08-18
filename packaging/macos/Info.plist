@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleDisplayName</key>
+  <string>${name}</string>
+  <key>CFBundleName</key>
+  <string>${name}</string>
+  <key>CFBundleIdentifier</key>
+  <string>${identifier}</string>
+  <key>CFBundleVersion</key>
+  <string>${version}</string>
+  <key>CFBundleShortVersionString</key>
+  <string>${version}</string>
+  <key>CFBundleExecutable</key>
+  <string>${name}</string>
+  <key>CFBundlePackageType</key>
+  <string>APPL</string>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>${language}</string>
+  <key>CFBundleInfoDictionaryVersion</key>
+  <string>6.0</string>
+  <key>LSMinimumSystemVersion</key>
+  <string>${minimumVersion}</string>
+  <key>NSBluetoothAlwaysUsageDescription</key>
+  <string>Pocket Relay uses Bluetooth to discover and chat with nearby peers when internet access is unavailable.</string>
+  <key>NSBluetoothPeripheralUsageDescription</key>
+  <string>Pocket Relay uses Bluetooth to advertise this Mac to nearby Pocket Relay peers.</string>
+</dict>
+</plist>

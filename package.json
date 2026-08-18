@@ -1,0 +1,36 @@
+{
+  "name": "pocket-relay",
+  "version": "1.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "description": "Offline-first Bare chat over Hyperswarm and BLE Swarm",
+  "main": "app.js",
+  "scripts": {
+    "start": "bare app.js",
+    "package:mac": "bare-build --host darwin-arm64 --host darwin-x64 --name \"Pocket Relay\" --identifier com.pocketrelay.app --minimum-version 13.0 --info-plist packaging/macos/Info.plist --out dist app.js",
+    "start:mac": "./scripts/start-macos.sh",
+    "verify:mac": "plutil -lint \"./dist/Pocket Relay.app/Contents/Info.plist\" && lipo \"./dist/Pocket Relay.app/Contents/MacOS/Pocket Relay\" -verify_arch arm64 x86_64 && codesign --verify --deep --strict --verbose=2 \"./dist/Pocket Relay.app\"",
+    "test": "bare test/all.js",
+    "smoke:hyperswarm": "bare test/hyperswarm-smoke.js"
+  },
+  "dependencies": {
+    "b4a": "^1.8.1",
+    "bare-events": "^2.9.1",
+    "bare-fs": "^4.8.0",
+    "bare-path": "^3.1.1",
+    "bare-readline": "^1.3.1",
+    "bare-signals": "^5.0.0",
+    "bare-storage": "^1.1.0",
+    "bare-stream": "^2.13.3",
+    "bare-tty": "^5.1.2",
+    "ble-swarm": "^2.0.1",
+    "hypercore-crypto": "^3.7.0",
+    "hyperswarm": "^4.17.0"
+  },
+  "devDependencies": {
+    "@hyperswarm/testnet": "^3.1.4",
+    "bare-build": "^1.0.4",
+    "brittle": "^4.1.0",
+    "hyperdht": "^6.33.1"
+  }
+}
