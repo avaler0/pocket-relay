@@ -49,7 +49,7 @@ npm run verify:mac
 
 This creates `dist/Pocket Relay.app` for both Apple Silicon and Intel and ad-hoc signs the bundle. Its Info.plist includes `NSBluetoothAlwaysUsageDescription` and `NSBluetoothPeripheralUsageDescription`.
 
-The packaging command places `scripts/macos-tools` first on its private `PATH`. Its `codesign` wrapper removes resource-fork and Finder extended attributes from each generated signing target, then delegates unchanged arguments to `/usr/bin/codesign`. This prevents Apple code-signing failures caused by stale build artifacts or stricter macOS extended-attribute validation; it does not affect application runtime behavior.
+The packaging command builds in a fresh macOS temporary directory and only moves the completed bundle into `dist`. It also places `scripts/macos-tools` first on its private `PATH`; its `codesign` wrapper removes resource-fork and Finder extended attributes from each generated signing target, then delegates unchanged arguments to `/usr/bin/codesign`. Together these prevent Apple code-signing failures caused by stale build artifacts, iCloud-managed project folders, or stricter macOS extended-attribute validation. This build-only workaround does not affect application runtime behavior.
 
 `bare-build` is packaging tooling and currently has a Node-based CLI; it never runs Pocket Relay application code or tests. The resulting app embeds the Bare runtime, and all application/test execution remains on Bare.
 
