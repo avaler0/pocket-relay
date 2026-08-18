@@ -7,7 +7,7 @@
   "main": "app.js",
   "scripts": {
     "start": "bare app.js",
-    "package:mac": "bare-build --host darwin-arm64 --host darwin-x64 --name \"Pocket Relay\" --identifier com.pocketrelay.app --minimum-version 13.0 --info-plist packaging/macos/Info.plist --out dist app.js",
+    "package:mac": "PATH=\"$PWD/scripts/macos-tools:$PATH\" bare-build --host darwin-arm64 --host darwin-x64 --name \"Pocket Relay\" --identifier com.pocketrelay.app --minimum-version 13.0 --info-plist packaging/macos/Info.plist --out dist app.js",
     "start:mac": "./scripts/start-macos.sh",
     "verify:mac": "plutil -lint \"./dist/Pocket Relay.app/Contents/Info.plist\" && lipo \"./dist/Pocket Relay.app/Contents/MacOS/Pocket Relay\" -verify_arch arm64 x86_64 && codesign --verify --deep --strict --verbose=2 \"./dist/Pocket Relay.app\"",
     "test": "bare test/all.js",

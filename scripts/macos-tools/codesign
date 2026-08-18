@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -eu
+
+pocket_relay_resource=''
+
+for pocket_relay_argument do
+  pocket_relay_resource=$pocket_relay_argument
+done
+
+if [ -n "$pocket_relay_resource" ] && [ -e "$pocket_relay_resource" ]; then
+  /usr/bin/xattr -cr "$pocket_relay_resource"
+fi
+
+exec /usr/bin/codesign "$@"
